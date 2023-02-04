@@ -4,43 +4,36 @@ FileIO::FileIO(std::string filePath, char mode)
 {
 	m_filePath = filePath;
 
+	DWORD dwAccess;
+	DWORD dwCreate;
+
 	if (mode == 'r')
-		//m_file = (HANDLE)OpenFile(m_filePath.c_str(), &m_fileInfo, OF_READ);
-		m_file = CreateFileA(m_filePath.c_str(), GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	{
+		dwAccess = GENERIC_READ;
+		dwCreate = OPEN_EXISTING;
+	}
 	else if (mode == 'w')
-		//m_file = (HANDLE)OpenFile(m_filePath.c_str(), &m_fileInfo, OF_WRITE);
-		m_file = CreateFileA(m_filePath.c_str(), GENERIC_WRITE, 0, NULL, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+	{
+		dwAccess = GENERIC_WRITE;
+		dwCreate = CREATE_NEW;
+	}
 	else
-		// TODO: throw error
-		printf("ll");
+		throw std::runtime_error(std::string("FileIO constructor: invalid mode parameter"));
+
+
+	m_file = CreateFileA(m_filePath.c_str(), dwAccess, 0, NULL, dwCreate, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	// low dword 0 high dword 1
 	DWORD bytes[2] = { 0 };
 	bytes[0] = GetFileSize(m_file, &bytes[1]);
+
 	// file > 2^32 bytes
 	if (bytes[1])
-		// does this work? yes
 		memcpy(&m_byteCount, &bytes[0], sizeof(unsigned long long));
 	// file <= 2^32 bytes
 	else
 		m_byteCount = bytes[0];
 
-	/*
-	// get number of bytes from file
-	DWORD lowByte = 0;
-	DWORD highByte = 0;
-	lowByte = GetFileSize(m_file, &highByte);
-
-	// file > 2^32 bytes
-	if (highByte)
-	{
-
-	}
-	// file <= 2^32 bytes
-	else
-		m_byteCount = lowByte;
-
-	*/
 }
 
 bool FileIO::doesFileExist()

@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 #include "Resources.h"
 #include "FileIO.h"
@@ -26,18 +27,12 @@
 class Server
 {
     WSADATA wsaData;
-    int iResult;
 
     SOCKET ListenSocket = INVALID_SOCKET;
     SOCKET ClientSocket = INVALID_SOCKET;
 
     struct addrinfo* serverSocketInfo = NULL;
     struct addrinfo socketCreateHints;
-
-    /*
-    int iSendResult;
-    char recvbuf[DEFAULT_BUFLEN];
-    int recvbuflen = DEFAULT_BUFLEN;*/
 
     bool m_isRunning = false;
     char m_requestBuffer[REQUEST_LENGTH] = { 0 };
@@ -57,6 +52,8 @@ public:
     {
         // TODO: validate
         Server* server = (Server*)param;
+        if (!server)
+            throw std::runtime_error("Server startServerThread: invalid param parameter");
 
         server->run();
 

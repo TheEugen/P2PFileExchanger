@@ -58,8 +58,8 @@ int Server::doTransmission()
     }
 
     std::cout << "Server: message says filepath is " << receivedFilePath << std::endl;
-    receivedFilePath = "C:\\Users\\Eugen\\Desktop\\testerfolgreich.exe";
-    // assert filepath len > 0
+    receivedFilePath = "C:\\Users\\GREG\\Desktop\\testerfolgreich.exe";
+
     // init FileIO object
     FileIO* fileIO = new FileIO(receivedFilePath, 'w');
 
@@ -133,8 +133,9 @@ int Server::handleRequest(sockaddr* clientInfo)
         std::getline(std::cin, userInput);
 
         // compare will return 0 if userinput equals y or n
-    } while (userInput.compare("y") != 0);
+    //} while (userInput.compare("y") != 0);
     //} while (userInput.compare("y") || userInput.compare("n"));
+    } while (userInput.compare("y") && userInput.compare("n"));
     printf("Server: exited userinput loop\n");
 
     // send answer to peer/client

@@ -2,6 +2,7 @@
 
 #include <windows.h>
 #include <iostream>
+#include <stdexcept>
 
 
 class FileIO

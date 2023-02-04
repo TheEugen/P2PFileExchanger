@@ -24,7 +24,7 @@ int Client::run(std::string serverIP, std::string filePath)
     }
 
     ZeroMemory(&hints, sizeof(hints));
-    //hints.ai_family = AF_UNSPEC;
+    //hints.ai_family = AF_UNSPEC;   <-- ip4 and ip6
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
@@ -92,7 +92,7 @@ int Client::run(std::string serverIP, std::string filePath)
         return 0;
     }
 
-    // cleanup rquest buffer
+    // cleanup request buffer
     memset(&m_requestBuffer[0], 0, m_requestBufferLen);
 
     // wait for answer, write it into request buffer
@@ -208,13 +208,16 @@ int Client::run(std::string serverIP, std::string filePath)
 
 bool Client::shutdownClient()
 {
+    int result;
+
     // shutdown the connection since no more data will be sent
-    iResult = shutdown(ConnectSocket, SD_SEND);
-    if (iResult == SOCKET_ERROR)
+    result = shutdown(ConnectSocket, SD_SEND);
+    if (result == SOCKET_ERROR)
     {
-        printf("shutdown failed with error: %d\n", WSAGetLastError());
-        closesocket(ConnectSocket);
-        WSACleanup();
+        //printf("shutdown failed with error: %d\n", WSAGetLastError());
+        //closesocket(ConnectSocket);
+        //WSACleanup();
+        doErrorCleanup("shutdown failed", true, NULL, 1, ConnectSocket);
         return false;
     }
 

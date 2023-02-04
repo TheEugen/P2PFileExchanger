@@ -32,7 +32,6 @@ class Client
     struct addrinfo* serverInfo = NULL,
         * ptr = NULL,
         hints;
-    int iResult;
 
     char m_requestBuffer[REQUEST_LENGTH] = { 0 };
     int m_requestBufferLen = REQUEST_LENGTH;
