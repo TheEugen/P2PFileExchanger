@@ -42,8 +42,12 @@ int Client::run(std::string serverIP, std::string filePath)
     // Attempt to connect to an address until one succeeds
     for (ptr = serverInfo; ptr != NULL; ptr = ptr->ai_next)
     {
+
+    
+        
         // Create a SOCKET for connecting to server
         ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
+    //ConnectSocket = socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
         if (ConnectSocket == INVALID_SOCKET)
         {
             //printf("socket failed with error: %ld\n", WSAGetLastError());
@@ -52,16 +56,37 @@ int Client::run(std::string serverIP, std::string filePath)
             return 0;
         }
 
-        // Connect to server.  
-        result = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+        // bind outgoing and receiving on port 27015
+        struct sockaddr_in sendAddr;
+        ZeroMemory(&sendAddr, sizeof(struct sockaddr_in));
+        sendAddr.sin_family = AF_INET;
+        sendAddr.sin_port = htons(27015);
+        sendAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+        result = bind(ConnectSocket, (SOCKADDR*)&sendAddr, sizeof(sendAddr));
         if (result == SOCKET_ERROR)
         {
             std::cout << "WSAError: " << std::to_string(WSAGetLastError()) << std::endl;
             closesocket(ConnectSocket);
             ConnectSocket = INVALID_SOCKET;
+            return 0;
+        }
+        // set timeout to 30 seconds
+        //int timeout = 30 * 1000;
+        //setsockopt(ConnectSocket, SOL_SOCKET, SO_SNDTIMEO, (char*)&timeout, sizeof(int));
+
+        // Connect to server.  
+        result = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+        //result = connect(ConnectSocket, serverInfo->ai_addr, (int)serverInfo->ai_addrlen);
+        if (result == SOCKET_ERROR)
+        {
+            std::cout << "WSAError: " << std::to_string(WSAGetLastError()) << std::endl;
+            closesocket(ConnectSocket);
+            ConnectSocket = INVALID_SOCKET;
+            //return 0;
             continue;
         }
         break;
+        
     }
 
     freeaddrinfo(serverInfo);
@@ -166,9 +191,15 @@ int Client::run(std::string serverIP, std::string filePath)
             std::cout << "Client: send " << std::to_string(tmp2) << " bytes" << std::endl;
 
             // we are done reading and sending
-            std::cout << "\n Transmission successfully completed!" << std::endl;
+            
             
             // TODO: wait until server sends answer that he's done
+            result = recv(ConnectSocket, &m_requestBuffer[0], m_requestBufferLen, 0);
+            if (result > 0)
+            {
+                std::cout << "\n Transmission successfully completed!" << std::endl;
+            }
+            else
             // WSASendDisconnect WSARecvDisconnect
             //doCleanup(fileIO, 1, ConnectSocket);
 

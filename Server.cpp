@@ -70,12 +70,19 @@ int Server::doTransmission()
             std::cout << "Server: recv failed with error " << std::to_string(WSAGetLastError()) << std::endl;
             break;
         }
+        // TODO: clear buffer?
             
     } while (cBytesReceived < receivedByteCount);
 
-    // fileIO cleanup
+    // send message to client that we are done so it can close it's socket
+    memset(&m_requestBuffer[0], 1, m_requestBufferLen);
+    tmp = send(m_clientSocket, &m_requestBuffer[0], m_requestBufferLen, 0);
+    
     std::cout << "Transmission complete" << std::endl;
     std::cout << "Received " << std::to_string(cBytesReceived) << " bytes" << std::endl;
+
+    // cleanup
+    delete fileIO;
 
     return 1;
 }
@@ -96,17 +103,13 @@ int Server::handleRequest(sockaddr* clientInfo)
 
         // get answer from user
         std::getline(std::cin, userInput);
-
-        // compare will return 0 if userinput equals y or n
-    //} while (userInput.compare("y") != 0);
-    //} while (userInput.compare("y") || userInput.compare("n"));
-    } while (userInput.compare("y") && userInput.compare("n"));
-    printf("Server: exited userinput loop\n");
+    } while (userInput.compare("y") != 0 && userInput.compare("n") != 0);
+    
 
     // send answer to peer/client
     int result = 0;
     // accepting request
-    if (!(userInput.compare("y")))
+    if (userInput.compare("y") == 0)
     {
         printf("Server: user accepted\n");
         memset(&m_requestAnswerBuffer[0], 1, m_requestAnswerBufferLen);
