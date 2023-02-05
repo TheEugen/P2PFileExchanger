@@ -42,12 +42,15 @@ int main()
 	std::cout << "#####################################################################" << std::endl;
 	std::cout << "#####################################################################" << std::endl;
 	std::cout << "#####################################################################" << std::endl;
-	std::cout << "\nTo send a file to a peer, type send <Path-To-File> <IP-Adress>" << std::endl;
+	std::cout << "\nTo send a file to a peer, type send <Path-To-File> <IP-Address>" << std::endl;
 	std::cout << "If the filepath contains a whitespace use "" around it\n\n";
 
 	// debug
 	std::string debugStr;
 	std::getline(std::cin, debugStr);
+
+	HANDLE serverThread = nullptr;
+	Server* server = nullptr;
 
 	if (!debugStr.compare("s"))
 	{
@@ -55,13 +58,12 @@ int main()
 		printf("Chosen server\n");
 
 		// init Server object
-		Server* server = new Server();
-		// TODO: maybe move to startServerThread
-		server->init();
+		//Server* server = new Server();
+		server = (Server*)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(Server));
 
 		// init server thread
 		DWORD serverThreadID;
-		HANDLE serverThread = CreateThread(NULL, 0, Server::startServerThread, server, 0, &serverThreadID);
+		serverThread = CreateThread(NULL, 0, Server::startServerThread, server, 0, &serverThreadID);
 		if (!serverThread)
 		{
 			printf("Starting server thread failed!");
@@ -120,6 +122,14 @@ int main()
 
 		// compare will return 0 if userinput equals exit
 	} while (userInput.compare("exit"));
+
+	if (serverThread)
+		//TerminateThread(serverThread, 1);
+		WaitForSingleObject(serverThread, INFINITE);
+
+	// cleanup
+	if(server)
+		HeapFree(GetProcessHeap(), 0, server);
 	
 	return 1;
 }
