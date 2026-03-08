@@ -22,114 +22,116 @@
 
 */
 
+/*
+
+(MAYBE) TODOs:
+
+	detect if router has UPnP activated und automatically forward port to server machine
+	make getPublicIP call in seperate non-blocking thread
+
+
+*/
+
+#define UNICODE
+
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <algorithm>
 #include <iterator>
 #include <vector>
+#include <memory>
+#include <iomanip>
+#include <locale>
 
 #include "Server.h"
 #include "Client.h"
+#include "Utils.h"
+
+
+std::wstring convertInput(std::wstring const& rawInput)
+{
+	std::string s;
+	s.resize(::WideCharToMultiByte(CP_UTF8, 0, rawInput.c_str(), -1, 0, 0, 0, 0));
+	::WideCharToMultiByte(CP_UTF8, 0, rawInput.c_str(), -1, const_cast<char*>(s.data()), s.size(), 0, 0);
+	std::vector<wchar_t> buf(::MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, 0, 0));
+	::MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, buf.data(), buf.size());
+
+	return std::wstring(buf.data());
+}
 
 int main()
 {
 	// display welcome message and how to use information
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "######		Peer-2-Peer File Exchanger		 ######" << std::endl;
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "#####################################################################" << std::endl;
-	std::cout << "\nTo send a file to a peer, type send <Path-To-File> <IP-Address>" << std::endl;
-	std::cout << "If the filepath contains a whitespace use "" around it\n\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "######		   Peer-2-Peer File Exchanger		       ######\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "#####################################################################\n";
+	std::cout << "\nType s for receiving files, type c for sending files, type quit to close the program" << std::endl;
+	
+	std::wstring userInput;
 
-	// debug
-	std::string debugStr;
-	std::getline(std::cin, debugStr);
+	/*
+	std::string s;
+	std::wstring tStr;
+	std::getline(std::wcin, tStr);
+	s.resize(::WideCharToMultiByte(CP_UTF8, 0, tStr.c_str(), -1, 0, 0, 0, 0));
+	::WideCharToMultiByte(CP_UTF8, 0, tStr.c_str(), -1, const_cast<char*>(s.data()), s.size(), 0, 0);
+	std::vector<wchar_t> buf(::MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, 0, 0));
+	::MultiByteToWideChar(CP_UTF8, 0, s.c_str(), -1, buf.data(), buf.size());
+	for(wchar_t t : buf)
+		std::wcout << t << std::endl;
+	auto f = std::wstring(buf.data());
+	//std::cout << "s: " << s;
+	*/
 
-	HANDLE serverThread = nullptr;
-	Server* server = nullptr;
+	// obj ptrs
+	auto server = std::make_unique<Server>();
+	auto client = std::make_unique<Client>();
 
-	if (!debugStr.compare("s"))
-	{
-		// debug
-		printf("Chosen server\n");
-
-		// init Server object
-		//Server* server = new Server();
-		server = (Server*)HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(Server));
-
-		// init server thread
-		DWORD serverThreadID;
-		serverThread = CreateThread(NULL, 0, Server::startServerThread, server, 0, &serverThreadID);
-		if (!serverThread)
-		{
-			printf("Starting server thread failed!");
-			return 0;
-		}
-	}
-
-	std::string userInput;
-	// main loop
 	do
 	{
-		// get user input
-		std::getline(std::cin, userInput);
-
-		// filter user input
-		// send filepath ip
-		// 4c + 1c + 256c + 1c + 15c = max 277 characters
-		// something evil is happening
+		std::cout << "Enter command: ";
+		std::getline(std::wcin, userInput);
 		if (userInput.size() > 277)
 			continue;
 
-		// process user input into tokens
-		std::istringstream iss(userInput);
-		std::vector<std::string> tokens;
-		std::copy(std::istream_iterator<std::string>(iss), std::istream_iterator<std::string>(), std::back_inserter(tokens));
-
-		// validate token count = 3
-		if (tokens.size() != 3)
-			continue;
-
-		if (!tokens[0].compare("send"))
-		{
-			/*
-			// init client object and argument structure for thread calling
-			Client* client = new Client();
-			PCLIENTTHREADARGUMENTS args;
-			args->client = client;
-			args->filePath = tokens[1];
-			args->serverIP = tokens[2];
-
-			// init client thread
-			DWORD clientThreadID;
-			HANDLE clientThread = CreateThread(NULL, 0, Client::startClientThread, args, 0, &clientThreadID);
-			if (!clientThread)
-			{
-				printf("Starting client thread failed!");
-				return 0;
-			}
-			*/
-
-			Client* client = new Client();
-			client->run(tokens[2], tokens[1]);
+		if (userInput.compare(L"s") == 0)
+		{	
+			std::cout << "\nPublic Router IP: " << getPublicIP() << "\n";
+			std::cout << "Radmin VPN IP: " << getLocalIPs() << "\n" << std::endl;
+			
+			server->run();
 		}
-		else
-			continue;
+		else if (userInput.compare(L"c") == 0)
+		{
+			std::cout << "\nTo send a file to a peer, type send <Path-To-File> <IP-Address>\n";
+			std::cout << "If the filepath contains a whitespace use double quotes around it\n" << std::endl;
 
-		// compare will return 0 if userinput equals exit
-	} while (userInput.compare("exit"));
+			do
+			{
+				std::cout << "Enter command: ";
+				std::getline(std::wcin, userInput);
 
-	if (serverThread)
-		//TerminateThread(serverThread, 1);
-		WaitForSingleObject(serverThread, INFINITE);
+				// process user input into tokens
+				std::wstringstream wss(L"send C:\\ööö.exe localhost");
+				std::vector<std::wstring> tokens;
+				std::copy(std::istream_iterator<std::wstring, wchar_t>(wss), std::istream_iterator<std::wstring, wchar_t>(), std::back_inserter(tokens));
+				std::wcout << tokens.size();
+				
 
-	// cleanup
-	if(server)
-		HeapFree(GetProcessHeap(), 0, server);
+				// validate token count = 3
+				if (tokens.size() == 3 && tokens[0].compare(L"send") == 0)
+					client->run(tokens[2], tokens[1]);
+
+			} while (userInput.compare(L"quit") != 0);
+		}
+	} while (userInput.compare(L"quit") != 0);
 	
+
+
 	return 1;
 }

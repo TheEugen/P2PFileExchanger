@@ -3,8 +3,11 @@
 #include <string>
 #include <locale>
 #include <codecvt>
+#include <IPTypes.h>
+#include <iphlpapi.h>
 
 #pragma comment(lib, "winhttp.lib")
+#pragma comment(lib, "IPHLPAPI.lib")
 
 static std::string getPublicIP()
 {
@@ -25,7 +28,8 @@ static std::string getPublicIP()
                     {
                         DWORD dwSize = 0;
                         DWORD dwDownloaded = 0;
-                        do {
+                        do
+                        {
                             if (!WinHttpQueryDataAvailable(hRequest, &dwSize))
                             {
                                 break;
@@ -68,3 +72,47 @@ static std::string getPublicIP()
 
     return ipAddress;
 }
+
+static std::string getLocalIPs()
+{
+    DWORD size = 32000;
+    DWORD result = 0;
+    PIP_ADAPTER_ADDRESSES pAddresses = nullptr;
+    char ip[INET_ADDRSTRLEN];
+    pAddresses = (IP_ADAPTER_ADDRESSES*)HeapAlloc(GetProcessHeap(), 0, size);
+    result = GetAdaptersAddresses(AF_INET, GAA_FLAG_INCLUDE_ALL_INTERFACES, nullptr, pAddresses, &size);
+
+    if(result == NO_ERROR)
+    {
+        PIP_ADAPTER_ADDRESSES currentAddr = pAddresses;
+        
+        while(currentAddr)
+        {
+            if(wcscmp(currentAddr->FriendlyName, L"Radmin VPN") == 0)
+            {
+                PIP_ADAPTER_UNICAST_ADDRESS unicastAddr = currentAddr->FirstUnicastAddress;
+
+                while (unicastAddr)
+                {
+                    if (unicastAddr->Address.lpSockaddr->sa_family == AF_INET)
+                    {
+                        auto socketAddr = (struct sockaddr_in*)unicastAddr->Address.lpSockaddr;
+                        
+                        if (inet_ntop(AF_INET, &socketAddr->sin_addr, ip, INET_ADDRSTRLEN))
+                            break;
+                    }
+
+                    unicastAddr = unicastAddr->Next;
+                }
+
+                break;
+            }
+            currentAddr = currentAddr->Next;
+        }
+    }
+
+    HeapFree(GetProcessHeap(), 0, pAddresses);
+    
+    return std::string(ip);
+}
+

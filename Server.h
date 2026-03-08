@@ -1,7 +1,7 @@
 #pragma once
 
 
-#undef UNICODE
+//#undef UNICODE
 
 #define WIN32_LEAN_AND_MEAN
 
@@ -13,6 +13,11 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <processthreadsapi.h>
+#include <locale>
+#include <codecvt>
+
+#include <Inaddr.h>
 
 #include "Resources.h"
 #include "FileIO.h"
@@ -34,6 +39,8 @@ class Server
     struct addrinfo* m_serverSocketInfo = NULL;
     struct addrinfo m_socketCreateHints;
 
+    struct sockaddr_in m_socketInCreateHints;
+
     bool m_isRunning = false;
     char m_requestBuffer[REQUEST_LENGTH] = { 0 };
     char m_packageBuffer[PACKAGE_LENGTH] = { 0 };
@@ -45,7 +52,7 @@ class Server
 public:
 
     int run();
-    int handleRequest(sockaddr* clientInfo);
+    int handleRequest();
     int doTransmission();
 
     static DWORD WINAPI startServerThread(LPVOID param)

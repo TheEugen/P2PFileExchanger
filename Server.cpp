@@ -10,23 +10,64 @@ int Server::doTransmission()
 
     std::cout << "Server: message says file has " << std::to_string(receivedByteCount) << " bytes" << std::endl;
 
+
+
+    //std::wstring test = std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes();
+    //std::wcout << "Test-String: " << "\" " + test + " \" " << std::endl;
     // build str from 9th byte to end
-    std::string receivedFilePath;
-    for (int i = 8; i < REQUEST_LENGTH; ++i)
+    
+    wchar_t* wFileName = new wchar_t[256];
+    //std::wstring receivedFileName;
+    //receivedFileName.resize(253);
+    mbstowcs(wFileName, &m_requestBuffer[8], 256);
+    auto receivedFileName = std::wstring(wFileName);
+    
+   //for (int i = 8; i < REQUEST_LENGTH; i += 2)
+   //{
+   //    // end of string
+   //    if (m_requestBuffer[i] < 0x20 || m_requestBuffer[i] > 0x7E)
+   //        break;
+   //
+   //    receivedFileName.append(std::wstring(1, m_requestBuffer[i]));
+   //}
+    
+    std::wcout << "Server: message says name of file is " << receivedFileName << std::endl;
+
+    DWORD dirBufferLen = 506;
+    std::wstring dirBuffer;
+    dirBuffer.resize(dirBufferLen);
+    GetCurrentDirectoryW(dirBufferLen, (LPWSTR)dirBuffer.c_str());//const_cast<char *>((dirBuffer.c_str())));
+    std::wcout << "Server: working directory is " << dirBuffer << " #####" << std::endl;
+
+    std::cout << "String size: " << dirBuffer.length() << std::endl;
+    
+    // erase all zeros from dirbuffer
+    for (int i = dirBuffer.size() - 1; i > -1; --i)
     {
-        // end of string
-        if (m_requestBuffer[i] == 0)
+        if (dirBuffer[i] != 0)
             break;
-
-        // append
-        receivedFilePath.append(std::string(1, m_requestBuffer[i]));
+        dirBuffer.pop_back();
     }
+    
+    //dirBuffer = dirBuffer.c_str();
+    
+    // build filepath for the new file
+    std::wstring finaleFilePath = std::wstring(dirBuffer);
+    finaleFilePath.resize(finaleFilePath.size() - 1);
+    finaleFilePath.shrink_to_fit();
+    finaleFilePath += L"\\";
+    finaleFilePath += receivedFileName;
+    //std::wstring finaleFilePath = dirBuffer + L"\\" + receivedFileName;
+    //auto wDirBuffer = std::wstring(dirBuffer);
+    //auto wBS = std::wstring(L"\\");
+    //auto finaleFilePath = wDirBuffer + wBS + receivedFileName;
 
-    std::cout << "Server: message says filepath is " << receivedFilePath << std::endl;
-    receivedFilePath = "C:\\Users\\GREG\\Desktop\\testerfolgreich.exe";
+    std::wcout << "finalpath: " << finaleFilePath << std::endl;
 
     // init FileIO object
-    FileIO* fileIO = new FileIO(receivedFilePath, 'w');
+    //finalFilePath = "C:\\Users\\Eugen\\Desktop\\test.exe";
+    FileIO* fileIO = new FileIO(finaleFilePath, 'w');
+    //FileIO* fileIO = new FileIO(receivedFilePath, 'w');
 
     // TODO: check if file already exists in the constructor of FILEIO
     // check if file already exists
@@ -62,7 +103,11 @@ int Server::doTransmission()
         tmp = recv(m_clientSocket, m_packageBuffer, m_packageBufferLen, 0);
         if (tmp > 0)
         {
-            WriteFile(fileIO->getFile(), (void*)m_packageBuffer, tmp, &bytesWritten, NULL);
+            // TODO: catch errors, especially if adminrights are necessary
+            if (!WriteFile(fileIO->getFile(), (void*)m_packageBuffer, tmp, &bytesWritten, nullptr))
+            {
+                std::cout << "Error writefile: " << GetLastError() << std::endl;
+            }
             cBytesReceived += tmp;
         }
         else
@@ -82,12 +127,13 @@ int Server::doTransmission()
     std::cout << "Received " << std::to_string(cBytesReceived) << " bytes" << std::endl;
 
     // cleanup
-    delete fileIO;
+    //delete fileIO;
+    doCleanup(fileIO, 1, m_clientSocket);
 
     return 1;
 }
 
-int Server::handleRequest(sockaddr* clientInfo)
+int Server::handleRequest()
 {
     // display request to user
     std::cout << "#####################################################################" << std::endl;
@@ -139,6 +185,8 @@ int Server::run()
 {
     int result;
 
+    m_isRunning = true;
+
     // Initialize Winsock
     result = WSAStartup(MAKEWORD(2, 2), &m_wsaData);
     if (result)
@@ -147,28 +195,8 @@ int Server::run()
         return 0;
     }
 
-    ZeroMemory(&m_socketCreateHints, sizeof(m_socketCreateHints));
-    m_socketCreateHints.ai_family = AF_INET;
-    m_socketCreateHints.ai_socktype = SOCK_STREAM;
-    m_socketCreateHints.ai_protocol = IPPROTO_TCP;
-    m_socketCreateHints.ai_flags = AI_PASSIVE;
-
-    // Resolve the server address and port
-    result = getaddrinfo(NULL, DEFAULT_PORT, &m_socketCreateHints, &m_serverSocketInfo);
-    if (result)
-    {
-        //printf("getaddrinfo failed with error: %d\n", result);
-        //WSACleanup();
-        doErrorCleanup("Server: getaddrinfo failed with error: " + std::to_string(result), false, NULL, 0, NULL);
-        return 0;
-    }
-
-    std::cout << "Your IP: " << m_serverSocketInfo->ai_addr << std::endl;
-
-    m_isRunning = true;
-
-    // Create a SOCKET for the server to listen for client connections.
-    m_listenSocket = socket(m_serverSocketInfo->ai_family, m_serverSocketInfo->ai_socktype, m_serverSocketInfo->ai_protocol);
+    
+    m_listenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (m_listenSocket == INVALID_SOCKET)
     {
         printf("socket failed with error: %ld\n", WSAGetLastError());
@@ -177,8 +205,12 @@ int Server::run()
         return 0;
     }
 
-    // Setup the TCP listening socket
-    result = bind(m_listenSocket, m_serverSocketInfo->ai_addr, (int)m_serverSocketInfo->ai_addrlen);
+    ZeroMemory(&m_socketInCreateHints, sizeof(m_socketCreateHints));
+    m_socketInCreateHints.sin_family = AF_INET;
+    m_socketInCreateHints.sin_addr.S_un.S_addr = INADDR_ANY;
+    m_socketInCreateHints.sin_port = htons(27015);
+
+    result = bind(m_listenSocket, (SOCKADDR*)&m_socketInCreateHints, sizeof(m_socketInCreateHints));
     if (result == SOCKET_ERROR)
     {
         printf("bind failed with error: %d\n", WSAGetLastError());
@@ -188,7 +220,8 @@ int Server::run()
         return 0;
     }
 
-    freeaddrinfo(m_serverSocketInfo);
+    if(m_serverSocketInfo)
+        freeaddrinfo(m_serverSocketInfo);
 
     int cBytesReceived = 0;
 
@@ -202,9 +235,9 @@ int Server::run()
         return 0;
     }
 
-    // Accept a client socket
-    sockaddr connectingClientInfo;
-    m_clientSocket = accept(m_listenSocket, &connectingClientInfo, NULL);
+    std::cout << "Listening for transmission requests.." << std::endl;
+
+    m_clientSocket = accept(m_listenSocket, nullptr, nullptr);
     if (m_clientSocket == INVALID_SOCKET)
     {
         printf("accept failed with error: %d\n", WSAGetLastError());
@@ -213,69 +246,20 @@ int Server::run()
         return 0;
     }
 
+    // listen socket no longer needed
+    //doCleanup(nullptr, 1, m_listenSocket);
+
     // get request message
     // receive 264 bytes and write it into requestBuffer
     cBytesReceived = recv(m_clientSocket, m_requestBuffer, m_requestBufferLen, 0);
-
-    // something went wrong
     if (cBytesReceived < 0)
     {
-        printf("recv failed with error: %d\n", WSAGetLastError());
-        closesocket(m_clientSocket);
-        WSACleanup();
+        doErrorCleanup("Server: recv failed", true, nullptr, 2, m_listenSocket, m_clientSocket);
         return 0;
     }
 
     // handle request
-    handleRequest(&connectingClientInfo);
-
-    // free memory for new requests
-    //freeaddrinfo(connectingClientInfo);
-    
-    /*
-    do
-    {
-        // listen for incoming tcp request
-        result = listen(m_listenSocket, SOMAXCONN);
-        if (result == SOCKET_ERROR) {
-            printf("listen failed with error: %d\n", WSAGetLastError());
-            closesocket(m_listenSocket);
-            WSACleanup();
-            return 0;
-        }
-
-        // Accept a client socket
-        sockaddr connectingClientInfo;
-        m_clientSocket = accept(m_listenSocket, &connectingClientInfo, NULL);
-        if (m_clientSocket == INVALID_SOCKET)
-        {
-            printf("accept failed with error: %d\n", WSAGetLastError());
-            closesocket(m_listenSocket);
-            WSACleanup();
-            return 0;
-        }
-
-        // get request message
-        // receive 264 bytes and write it into requestBuffer
-        cBytesReceived = recv(m_clientSocket, m_requestBuffer, m_requestBufferLen, 0);
-
-        // something went wrong
-        if (cBytesReceived < 0)
-        {
-            printf("recv failed with error: %d\n", WSAGetLastError());
-            closesocket(m_clientSocket);
-            WSACleanup();
-            return 0;
-        }
-
-        // handle request
-        handleRequest(&connectingClientInfo);
-
-        // free memory for new requests
-        //freeaddrinfo(connectingClientInfo);
-
-        // when user enters "exit" exit loop
-    } while (m_isRunning);*/
+    handleRequest();
 
     return 1;
 }

@@ -21,9 +21,6 @@
 #pragma comment (lib, "AdvApi32.lib")
 
 
-#define DEFAULT_BUFLEN 512
-#define DEFAULT_PORT "27015"
-
 
 class Client
 {
@@ -40,16 +37,22 @@ class Client
 
 public:
     
-    int run(std::string serverIP, std::string filePath);
-    bool shutdownClient();
+    int run(std::wstring const& serverIP, std::wstring filePath);
+    int run2(std::string const& serverIP, std::string filePath);
 
+    /*
     static DWORD WINAPI startClientThread(LPVOID param)
     {
-        // TODO: validate
-        PCLIENTTHREADARGUMENTS args = (PCLIENTTHREADARGUMENTS)param;
+        auto args = (PCLIENTTHREADARGUMENTS)param;
+
+        if(!args)
+            return 1;
 
         Client* client = args->client;
 
         client->run(args->serverIP, args->filePath);
+
+        return 0;
     }
+    */
 };

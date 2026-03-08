@@ -8,7 +8,7 @@
 #include "FileIO.h"
 
 
-static void doErrorCleanup(std::string errorMsg, bool getLastWSAError, FileIO* fileIO, int socketCount, SOCKET sockets...)
+static void doErrorCleanup(std::string const& errorMsg, bool getLastWSAError, FileIO* fileIO, int socketCount, SOCKET sockets...)
 {
 	// display error message
 	if (getLastWSAError)
@@ -20,10 +20,11 @@ static void doErrorCleanup(std::string errorMsg, bool getLastWSAError, FileIO* f
 	//doCleanup(fileIO, socketCount, sockets);
 
 	// FileIO
-	if (fileIO)
-	{
-		CloseHandle(fileIO->getFile());
-	}
+	//if (fileIO)
+	//{
+	//	CloseHandle(fileIO->getFile());
+	//	delete fileIO;
+	//}
 
 	// Sockets
 	if (socketCount)
@@ -45,6 +46,7 @@ static void doCleanup(FileIO* fileIO, int socketCount, SOCKET sockets...)
 	if (fileIO)
 	{
 		CloseHandle(fileIO->getFile());
+		delete fileIO;
 	}
 
 	// Sockets

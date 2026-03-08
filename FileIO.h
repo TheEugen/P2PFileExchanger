@@ -9,19 +9,19 @@ class FileIO
 {
 	HANDLE m_file;
 	OFSTRUCT m_fileInfo;
-	std::string m_filePath;
+	std::wstring m_filePath;
 	unsigned long long m_byteCount;
+	std::string m_filePath2;
 
 public:
 
-	FileIO(std::string filePath, char mode);
+	FileIO(std::wstring const& filePath, char mode);
+	FileIO(std::string const& filePath, char mode);
+	~FileIO();
 
-	bool doesFileExist();
-	HANDLE getFile();
-	OFSTRUCT* getFileInfoPtr();
-	unsigned long long getByteCount();
-
-
+	bool doesFileExist() const;
+	HANDLE getFile() const;
+	unsigned long long getByteCount() const;
 };
 
 

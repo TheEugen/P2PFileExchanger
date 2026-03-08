@@ -1,0 +1,195 @@
+﻿  Client.cpp
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C2143: Syntaxfehler: Es fehlt ";" vor "*"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,16): error C2238: Unerwartete(s) Token vor ";"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\client.h(52,32): error C2039: "client" ist kein Member von "ClientThreadArguments".
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(13): message : Siehe Deklaration von "ClientThreadArguments"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Client.cpp(202,14): error C2039: "cleanUp" ist kein Member von "Client".
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\client.h(28): message : Siehe Deklaration von "Client"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Client.cpp(204,17): error C2065: "ConnectSocket": nichtdeklarierter Bezeichner
+  FileIO.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(47,11): error C3646: "nLength": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(47,18): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(48,12): error C3646: "lpSecurityDescriptor": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(48,32): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(49,10): error C3646: "bInheritHandle": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(49,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(53,15): error C3646: "Internal": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(53,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(54,15): error C3646: "InternalHigh": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(54,27): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(57,19): error C3646: "Offset": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(57,25): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(58,19): error C3646: "OffsetHigh": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(58,29): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(60,15): error C3646: "Pointer": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(60,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(63,13): error C3646: "hEvent": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(63,19): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(67,15): error C3646: "lpCompletionKey": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(67,30): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(69,15): error C3646: "Internal": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(69,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(70,11): error C3646: "dwNumberOfBytesTransferred": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(70,37): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(81,11): error C3646: "dwLowDateTime": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(81,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(82,11): error C3646: "dwHighDateTime": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(82,25): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(91,10): error C3646: "wYear": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(91,15): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(92,10): error C3646: "wMonth": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(92,16): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(93,10): error C3646: "wDayOfWeek": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(93,20): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(94,10): error C3646: "wDay": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(94,14): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(95,10): error C3646: "wHour": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(95,15): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(96,10): error C3646: "wMinute": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(96,17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(97,10): error C3646: "wSecond": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(97,17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(98,10): error C3646: "wMilliseconds": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(98,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(103,11): error C3646: "dwFileAttributes": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(103,27): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(107,11): error C3646: "nFileSizeHigh": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(107,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(108,11): error C3646: "nFileSizeLow": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(108,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(109,11): error C3646: "dwReserved0": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(109,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(110,11): error C3646: "dwReserved1": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(110,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(111,15): error C3646: "CHAR": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(111,22): error C3646: "cFileName": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(111,31): error C2143: Syntaxfehler: Es fehlt "," vor "["
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(111,43): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(112,15): error C3646: "CHAR": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(112,22): error C3646: "cAlternateFileName": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(112,40): error C2143: Syntaxfehler: Es fehlt "," vor "["
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(112,46): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(120,11): error C3646: "dwFileAttributes": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(120,27): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(124,11): error C3646: "nFileSizeHigh": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(124,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(125,11): error C3646: "nFileSizeLow": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(125,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(126,11): error C3646: "dwReserved0": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(126,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(127,11): error C3646: "dwReserved1": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(127,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(128,15): error C3646: "WCHAR": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(128,22): error C3646: "cFileName": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(128,31): error C2143: Syntaxfehler: Es fehlt "," vor "["
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(128,43): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(129,15): error C3646: "WCHAR": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(129,22): error C3646: "cAlternateFileName": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(129,40): error C2143: Syntaxfehler: Es fehlt "," vor "["
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(129,46): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(224,46): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(224,30): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "CRITICAL_SECTION"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(225,48): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(225,31): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "PCRITICAL_SECTION"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(228,58): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(228,36): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "CRITICAL_SECTION_DEBUG"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(229,60): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(229,37): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "PCRITICAL_SECTION_DEBUG"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(234,9): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(234,2): error C2065: "WINAPI": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(234,10): error C2065: "LPOVERLAPPED_COMPLETION_ROUTINE": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(234,41): error C2513: "int": Keine Variable vor "=" deklariert
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(234,42): error C2143: Syntaxfehler: Es fehlt ";" vor "("
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(235,13): error C2146: Syntaxfehler: Fehlendes ")" vor Bezeichner "DWORD"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(235,19): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(235,13): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "DWORD"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(238,5): error C2059: Syntaxfehler: ")"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(244,11): error C3646: "lpData": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(244,17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(245,11): error C3646: "cbData": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(245,17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(246,10): error C3646: "cbOverhead": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(246,20): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(247,10): error C3646: "iRegionIndex": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(247,22): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(248,10): error C3646: "wFlags": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(248,16): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(251,20): error C3646: "hMem": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(251,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(252,19): error C3646: "dwReserved": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(252,29): error C2143: Syntaxfehler: Es fehlt "," vor "["
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(252,34): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(255,19): error C3646: "dwCommittedSize": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(255,34): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(256,19): error C3646: "dwUnCommittedSize": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(256,36): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(257,20): error C3646: "lpFirstBlock": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(257,32): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(258,20): error C3646: "lpLastBlock": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(258,31): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(271,11): error C3646: "Version": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(271,18): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(272,11): error C3646: "Flags": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(272,16): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(275,21): error C3646: "LocalizedReasonModule": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(275,42): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(276,19): error C3646: "LocalizedReasonId": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(276,36): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(277,19): error C3646: "ReasonStringCount": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(277,36): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(278,20): error C2143: Syntaxfehler: Es fehlt ";" vor "*"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(278,20): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(278,34): error C2238: Unerwartete(s) Token vor ";"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(282,16): error C3646: "SimpleReasonString": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(282,34): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(299,23): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(299,16): error C2065: "WINAPI": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(299,24): error C2065: "PTHREAD_START_ROUTINE": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(299,45): error C2513: "int": Keine Variable vor "=" deklariert
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(299,46): error C2143: Syntaxfehler: Es fehlt ";" vor "("
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(300,12): error C2146: Syntaxfehler: Fehlendes ")" vor Bezeichner "lpThreadParameter"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(301,5): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(300,12): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "lpThreadParameter"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(301,5): error C2059: Syntaxfehler: ")"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(302,53): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(302,31): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "LPTHREAD_START_ROUTINE"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,24): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,24): error C2378: "LPVOID": Neudefinition; Symbol kann nicht mit typedef überladen werden
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(300): message : Siehe Deklaration von "LPVOID"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,17): error C2065: "WINAPI": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,25): error C2065: "PENCLAVE_ROUTINE": nichtdeklarierter Bezeichner
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,41): error C2513: "int": Keine Variable vor "=" deklariert
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(304,42): error C2143: Syntaxfehler: Es fehlt ";" vor "("
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(305,12): error C2146: Syntaxfehler: Fehlendes ")" vor Bezeichner "lpThreadParameter"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(306,5): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(305,5): error C2086: "int LPVOID": Neudefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(300): message : Siehe Deklaration von "LPVOID"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(305,12): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "lpThreadParameter"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(306,5): error C2059: Syntaxfehler: ")"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(307,43): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(307,26): error C2146: Syntaxfehler: Fehlendes ";" vor Bezeichner "LPENCLAVE_ROUTINE"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(310,22): error C3646: "ExceptionRecord": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(310,37): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(315,12): error C3646: "hThread": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(315,19): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(316,12): error C3646: "lpThreadLocalBase": Unbekannter Überschreibungsspezifizierer
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\minwinbase.h(316,29): fatal  error C1003: Mehr als 100 Fehler gefunden; Kompilierung wird abgebrochen.
+  Main.cpp
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C2143: Syntaxfehler: Es fehlt ";" vor "*"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,16): error C2238: Unerwartete(s) Token vor ";"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Client.h(52,32): error C2039: "client" ist kein Member von "ClientThreadArguments".
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(13): message : Siehe Deklaration von "ClientThreadArguments"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Main.cpp(45,15): warning C4129: "T": nicht erkannte Folge von Escapesequenz
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Main.cpp(45,15): warning C4129: "Y": nicht erkannte Folge von Escapesequenz
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Main.cpp(45,15): warning C4129: "F": nicht erkannte Folge von Escapesequenz
+  Server.cpp
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C2143: Syntaxfehler: Es fehlt ";" vor "*"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,8): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Resources.h(15,16): error C2238: Unerwartete(s) Token vor ";"
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Server.cpp(56,34): warning C4293: "<<": Umschaltanzahl ist negativ oder zu groß, Verhalten undefiniert.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Server.cpp(56,61): warning C4293: "<<": Umschaltanzahl ist negativ oder zu groß, Verhalten undefiniert.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Server.cpp(56,88): warning C4293: "<<": Umschaltanzahl ist negativ oder zu groß, Verhalten undefiniert.
+C:\dev\VisualStudio\P2PFileExchanger\P2PFileExchanger\Server.cpp(56,114): warning C4293: "<<": Umschaltanzahl ist negativ oder zu groß, Verhalten undefiniert.
+  Code wird generiert...
