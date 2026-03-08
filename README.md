@@ -85,4 +85,4 @@ send "C:\My Files\document.pdf" 203.0.113.42
 - [ ] Configurable save path on the receiver side
 - [ ] Support multiple sequential transfer requests per session
 - [ ] Encrypted transfers
-- [ ] GUI for easier use
+- [ ] GUI for easier use 
